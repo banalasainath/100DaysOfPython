@@ -1,10 +1,16 @@
 import requests
 
-trivia_api_url = "https://opentdb.com/api.php?amount=10&category=21&type=boolean"
+parameters = {
+    "amount": 10,
+    "type": "boolean"
+}
 
-response = requests.get("https://opentdb.com/api.php?amount=10&category=21&type=boolean")
+response = requests.get(url="https://opentdb.com/api.php", params=parameters)
+response.raise_for_status()
+
 data = response.json()
-print(data)
+
+question_data = data["results"]
 
 # question_data = [
 #     {

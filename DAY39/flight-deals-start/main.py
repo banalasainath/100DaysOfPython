@@ -1,29 +1,50 @@
-#This file will need to use the DataManager,FlightSearch, FlightData, NotificationManager classes to achieve the program requirements.
+# This file will need to use the DataManager,FlightSearch, FlightData, NotificationManager classes to achieve the
+# program requirements.
+from pprint import pprint
+from datetime import datetime, timedelta
+import time
 
-sheet = "https://docs.google.com/spreadsheets/d/1YMK-kYDYwuiGZoawQy7zyDjEIU9u8oggCV4H2M9j7os/edit?usp=sharing"
+from data_manager import DataManager
+from flight_data import FlightData, find_cheapest_flight
+from flight_search import FlightSearch
+from notification_manager import NotificationManager
 
-'''APIs Required
+SOURCE_LOCATION_CODE = 'LON'
+STARTING_DATE = datetime.now() + timedelta(days=1)
+six_month_from_today = datetime.now() + timedelta(days=(6*30))
 
+sheet_manager = DataManager()
+flight_search = FlightSearch()
+notification_manager = NotificationManager()
+# flight_data = FlightData()
+sheet_data = sheet_manager.get_data()
+pprint(sheet_data)
 
-Google Sheet Data Management - https://sheety.co/
+# iterating through each record which consists of details of city, flight cost and price
+for rec in sheet_data:
+    # Updating the sheet when the iataCode in the sheet for a specific city is an empty string
 
-Amadeus Flight Search API (Free Signup, Credit Card not required) - https://developers.amadeus.com/
+    if rec["iataCode"] == '':
+        rec["iataCode"] = flight_search.get_iata_code(rec["city"])
+        sheet_manager.update_sheet(rec, rec["id"])
 
-Amadeus Flight Offer Docs - https://developers.amadeus.com/self-service/category/flights/api-doc/flight-offers-search/api-reference
+sheet_data = sheet_manager.get_data()
+pprint(sheet_data)
 
-Amadeus How to work with API keys and tokens guide - https://developers.amadeus.com/get-started/get-started-with-self-service-apis-335
+for rec in sheet_data:
+    print(f"Getting the flights info between {SOURCE_LOCATION_CODE} to {rec['city']}")
+    # Getting the flights between the source and destination
+    searched_flights = flight_search.get_flights_data_in_next_six_months(SOURCE_LOCATION_CODE, rec["iataCode"], STARTING_DATE, six_month_from_today)
 
-Amadeus Search for Airport Codes by City name - https://developers.amadeus.com/self-service/category/destination-experiences/api-doc/city-search/api-reference
+    # Getting the cheapest flight
+    cheapest_flight = find_cheapest_flight(searched_flights)
+    print(f"{rec['city']}: €{cheapest_flight.price}")
+    # Sending the msg notification through twilio when the price got dropped
+    if cheapest_flight.price != "N/A" and cheapest_flight.price < rec["lowestPrice"]:
+        print(f"Lower price flight found to {rec['city']}")
 
-Twilio Messaging (SMS or WhatsApp) API - https://www.twilio.com/docs/messaging/quickstart/python
+        notification_manager.send_sms(msg=f"ALERT: Price got dropped for the flight journey between "
+                                          f"{cheapest_flight.origin_airport} to {cheapest_flight.destination_airport}, "
+                                          f"on {cheapest_flight.outdate} until {cheapest_flight.return_date}.")
+    time.sleep(2)
 
-
-
-Program Requirements
-Use the Flight Search and Sheety API to populate your own copy of the Google Sheet with International Air Transport Association (IATA) codes for each city. Most of the cities in the sheet include multiple airports, you want the city code (not the airport code see here).
-
-Use the Flight Search API to check for the cheapest flights from tomorrow to 6 months later for all the cities in the Google Sheet.
-
-If the price is lower than the lowest price listed in the Google Sheet then send an SMS (or WhatsApp Message) to your own number using the Twilio API.
-
-The SMS should include the departure airport IATA code, destination airport IATA code, flight price and flight dates. e.g.'''

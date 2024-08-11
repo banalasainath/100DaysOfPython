@@ -1,0 +1,7 @@
+Day39:
+Goal: Capstone Project of finding the cheapest flights between two locations using https://test.api.amadeus.com.
+Topics: 
+-> requests module 
+-> OOPS(Classes definition)
+-> Twilio - module and api used to send the alert
+-> .env file used to define variables as environment variables and importing into prog using python-dotenv module

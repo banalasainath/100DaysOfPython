@@ -5,3 +5,9 @@ Topics:
 -> OOPS(Classes definition)
 -> Twilio - module and api used to send the alert
 -> .env file used to define variables as environment variables and importing into prog using python-dotenv module
+Day40:
+Goal: By extending the Day39 project and sending the alerts to the user through email, by collecting their email and username
+Topics:
+-> creating a google form and linking it to google sheet
+-> Authenticating using HTTPBasicAuth from requests.auth
+-> Revisited smtplib module to send the emails to the customers

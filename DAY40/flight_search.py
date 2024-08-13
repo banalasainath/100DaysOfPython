@@ -104,7 +104,7 @@ class FlightSearch:
 
         return code
 
-    def check_flights(self, origin_city_code, destination_city_code, from_time, to_time):
+    def check_flights(self, origin_city_code, destination_city_code, from_time, to_time, is_direct=True):
         """
         Searches for flight options between two cities on specified departure and return dates
         using the Amadeus API.
@@ -114,6 +114,7 @@ class FlightSearch:
             destination_city_code (str): The IATA code of the destination city.
             from_time (datetime): The departure date.
             to_time (datetime): The return date.
+            is_direct (bool): Indicates whether it is a direct flight or having any stops
 
         Returns:
             dict or None: A dictionary containing flight offer data if the query is successful; None
@@ -133,7 +134,7 @@ class FlightSearch:
             "departureDate": from_time.strftime("%Y-%m-%d"),
             "returnDate": to_time.strftime("%Y-%m-%d"),
             "adults": 1,
-            "nonStop": "true",
+            "nonStop": "true" if is_direct else "false",
             "currencyCode": "GBP",
             "max": "10",
         }

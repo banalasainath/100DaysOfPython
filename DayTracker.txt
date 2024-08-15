@@ -11,3 +11,9 @@ Topics:
 -> creating a google form and linking it to google sheet
 -> Authenticating using HTTPBasicAuth from requests.auth
 -> Revisited smtplib module to send the emails to the customers
+Day41:
+Topics:
+-> Got basic understanding of How a Website and internet works
+-> HTML Basic tags (Header tags; paragraph tags, self closing tags(<hr />, <br />))
+-> Lorem ipsum(articles; lipusm.com)
+-> diffchecker.com

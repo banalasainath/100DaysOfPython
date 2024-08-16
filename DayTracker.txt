@@ -17,3 +17,11 @@ Topics:
 -> HTML Basic tags (Header tags; paragraph tags, self closing tags(<hr />, <br />))
 -> Lorem ipsum(articles; lipusm.com)
 -> diffchecker.com
+Day42:
+Topics:
+-> HTML Boiler Plate
+-> List Elements (unorderedList(<ul></ul>) and orderedList(<ol></ol>))
+-> Indentation and nesting importance while using lists
+-> Anchor tag(<a></a>) -> href
+-> HTML Attributes, GLOBAL Attributes <tag attribute=value attribute2=value2> content </tag>
+-> Image tag (<img />) -> src, alt

@@ -25,3 +25,14 @@ Topics:
 -> Anchor tag(<a></a>) -> href
 -> HTML Attributes, GLOBAL Attributes <tag attribute=value attribute2=value2> content </tag>
 -> Image tag (<img />) -> src, alt
+Day43:
+Topics:
+-> Why CSS, alternatives to CSS, CSS History
+-> Types of CSS (inline, internal, External)
+-> Selectors (
+    Element selectors, 
+    class selector(.<name>) using "class" attribute
+    Id selector (#<name>) using "id" attribute
+    Attribute selector
+    diff b/w Id selector and class selector
+    )

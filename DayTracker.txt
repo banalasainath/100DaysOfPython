@@ -36,3 +36,17 @@ Topics:
     Attribute selector
     diff b/w Id selector and class selector
     )
+Day44:
+Resources:
+color mixer: https://www.csfieldguide.org.nz/en/interactives/rgb-mixer/
+named-color: https://developer.mozilla.org/en-US/docs/Web/CSS/named-color
+colorhunt
+to get custom font: fonts.google.com
+chrome_extn: https://chromewebstore.google.com/detail/pesticide-for-chrome/bakpbgckdnepkmkeaiomhmfcnejndkbi
+Topics:
+-> Colors
+-> font properties: 
+    font-size(px(1/96 inch),pt(1/72 inch),em(100% of parent),rem(100% of root))
+    font-weight(normal,bold, lighter, bolder and numbers(100-900))
+    font-family: <typeface>, <generic_typeface> ex:(font-family: "Times New Roman",serif)
+    text-align: 

@@ -40,6 +40,7 @@ Day44:
 Resources:
 color mixer: https://www.csfieldguide.org.nz/en/interactives/rgb-mixer/
 named-color: https://developer.mozilla.org/en-US/docs/Web/CSS/named-color
+text-transform: https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform
 colorhunt
 to get custom font: fonts.google.com
 chrome_extn: https://chromewebstore.google.com/detail/pesticide-for-chrome/bakpbgckdnepkmkeaiomhmfcnejndkbi
@@ -50,3 +51,6 @@ Topics:
     font-weight(normal,bold, lighter, bolder and numbers(100-900))
     font-family: <typeface>, <generic_typeface> ex:(font-family: "Times New Roman",serif)
     text-align: 
+-> inspection of CSS
+-> Padding, border, margin
+-> content Division element(<div> used to group the elements)
